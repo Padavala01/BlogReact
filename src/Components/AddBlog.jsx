@@ -22,30 +22,34 @@ const AddBlog = () => {
 
         }
 
-        var data=localStorage.getItem('blog');
+        var data=localStorage.getItem('blog') ;
         if(data){
+            console.log("if block")
             data=JSON.parse(data);
             var current_blog={title:title,description:description}
-            console.log(imageFile);
+            console.log(imageFile,"1");
+            console.log(image,"2")
             if(image){
                 console.log(imageFile)
                 console.log(imageFile)
                 current_blog.image=imageFile 
-            
             }
-           
-        //    console.log(image.name); 
+        //  console.log(image.name); 
             data.push(current_blog);                    
             localStorage.setItem('blog', JSON.stringify(data));
             
         }
         else{
+            console.log("else block")
             data=[{title:title,description:description}]; 
+            console.log(imageFile,"1");
+            console.log(image,"2")
             if(image){
+                console.log("else block 1")
                 console.log(imageFile)
                 console.log(imageFile)
-                data.image=imageFile    ;
-            }                            
+                data[0].image=imageFile    ;
+            }                          
             localStorage.setItem('blog', JSON.stringify(data));
         }
         setSuccess(true);
@@ -59,10 +63,10 @@ const AddBlog = () => {
     const handleImageChange = (e) => {
         const file=e.target.files[0]; 
         if(file){
-            console.log(file);
-            setImage(file); 
+            // console.log(file);
+            setImage( file); 
             setImageFile(URL.createObjectURL(file))
-            console.log("Itis working fine")
+            // console.log("Itis working fine")
         }
     }
 
